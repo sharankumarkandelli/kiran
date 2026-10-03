@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PENUMARTHI Wedding Invitation</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fff1f5, #ffe0e8, #fff7f0);
+            color: #4b2630;
+            overflow-x: hidden;
+        }
+
+        /* ---------------- NAVBAR ---------------- */
+
+        .navbar {
+            background: rgba(80, 15, 35, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 25px;
+            color: #ffd9a8 !important;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            color: white !important;
+            margin: 0 8px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #ffd9a8 !important;
+            transform: translateY(-2px);
+        }
+
+        /* ---------------- PAGE ---------------- */
+
+        .page {
+            min-height: 100vh;
+            display: none;
+            padding: 100px 20px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page.active {
+            display: block;
+            animation: pageIn 1s ease;
+        }
+
+        @keyframes pageIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ---------------- HEART BACKGROUND ---------------- */
+
+        .heart {
+            position: fixed;
+            bottom: -50px;
+            font-size: 20px;
+            color: rgba(190, 25, 65, 0.25);
+            animation: floatHeart linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes floatHeart {
+
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ---------------- MAIN CARD ---------------- */
+
+        .hero-card {
+            max-width: 950px;
+            margin: auto;
+            min-height: 650px;
+            padding: 70px 30px;
+            border-radius: 35px;
+
+            background:
+                linear-gradient(
+                    rgba(255,255,255,0.92),
+                    rgba(255,241,245,0.94)
+                );
+
+            box-shadow:
+                0 25px 70px rgba(100, 20, 40, 0.2);
+
+            border: 2px solid rgba(180, 40, 75, 0.15);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-card::before {
+            content: "♥";
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 45px;
+            color: #b51f4b;
+            animation: pulse 2s infinite;
+        }
+
+        .hero-card::after {
+            content: "♥";
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 45px;
+            color: #b51f4b;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.3);
+            }
+        }
+
+        .small-title {
+            letter-spacing: 5px;
+            color: #9b3450;
+            font-size: 15px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(45px, 8vw, 85px);
+            color: #711c35;
+            margin: 20px 0;
+        }
+
+        .couple {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(35px, 6vw, 65px);
+            color: #a51f48;
+        }
+
+        .heart-between {
+            color: #d12655;
+            animation: pulse 1.5s infinite;
+        }
+
+        .date {
+            font-size: 20px;
+            margin-top: 25px;
+        }
+
+        /* ---------------- BUTTON ---------------- */
+
+        .btn-wedding {
+            background: linear-gradient(45deg, #8c1739, #c72d59);
+            border: none;
+            color: white;
+            padding: 13px 30px;
+            border-radius: 30px;
+            margin-top: 25px;
+            transition: 0.4s;
+            box-shadow: 0 10px 25px rgba(150, 20, 60, 0.25);
+        }
+
+        .btn-wedding:hover {
+            transform: translateY(-5px) scale(1.03);
+            color: white;
+            box-shadow: 0 15px 35px rgba(150, 20, 60, 0.4);
+        }
+
+        /* ---------------- CONTENT CARD ---------------- */
+
+        .content-card {
+            max-width: 1000px;
+            margin: auto;
+            padding: 50px 35px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(80, 20, 40, 0.15);
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            color: #7c2039;
+            font-size: 45px;
+            margin-bottom: 25px;
+        }
+
+        .ornament {
+            color: #bd2a50;
+            font-size: 30px;
+            margin: 15px;
+        }
+
+        /* ---------------- INFO BOXES ---------------- */
+
+        .info-box {
+            padding: 30px 20px;
+            margin: 15px 0;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #fff5f7, #ffe4eb);
+            border: 1px solid rgba(170, 30, 70, 0.12);
+            transition: 0.4s;
+        }
+
+        .info-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(100, 20, 40, 0.12);
+        }
+
+        .info-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .info-box h3 {
+            font-family: 'Playfair Display', serif;
+            color: #8d2440;
+        }
+
+        /* ---------------- TIMELINE ---------------- */
+
+        .timeline {
+            max-width: 700px;
+            margin: 40px auto;
+            text-align: left;
+        }
+
+        .timeline-item {
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 4px solid #a72348;
+            background: #fff7f8;
+            border-radius: 0 20px 20px 0;
+            transition: 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+        }
+
+        /* ---------------- FOOTER ---------------- */
+
+        footer {
+            background: #55152b;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        /* ---------------- FLOWERS ---------------- */
+
+        .flower {
+            position: fixed;
+            top: -50px;
+            font-size: 25px;
+            animation: fall linear infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+
+            0% {
+                transform: translateY(-50px) rotate(0);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ---------------- RESPONSIVE ---------------- */
+
+        @media(max-width: 768px) {
+
+            .page {
+                padding: 90px 12px 30px;
+            }
+
+            .hero-card {
+                min-height: 600px;
+                padding: 50px 15px;
+            }
+
+            .section-title {
+                font-size: 35px;
+            }
+
+            .content-card {
+                padding: 35px 18px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg fixed-top">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="#">
+            PENUMARTHI ♥
+        </a>
+
+        <button class="navbar-toggler bg-light"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" onclick="showPage('home')">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" onclick="showPage('story')">
+                        Our Story
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" onclick="showPage('details')">
+                        Wedding Details
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" onclick="showPage('welcome')">
+                        Welcome
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- PAGE 1 -->
+
+<section id="home" class="page active">
+
+    <div class="hero-card">
+
+        <div>
+
+            <div class="small-title">
+                YOU ARE CORDIALLY INVITED
+            </div>
+
+            <h1>
+                PENUMARTHI
+            </h1>
+
+            <div class="ornament">
+                ❦ ♥ ❦
+            </div>
+
+            <p>
+                A beautiful celebration of love,
+                togetherness and a new beginning
+            </p>
+
+            <div class="couple">
+
+                PRASAD
+
+                <span class="heart-between">
+                    ♥
+                </span>
+
+                MOUNIKA
+
+            </div>
+
+            <p class="date">
+                27 March 2026 • 8:00
+            </p>
+
+            <p>
+                📍 ELURU
+            </p>
+
+            <button class="btn btn-wedding"
+                    onclick="showPage('story')">
+
+                Open Invitation ♥
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PAGE 2 -->
+
+<section id="story" class="page">
+
+    <div class="content-card">
+
+        <div class="ornament">
+            ♥ ❦ ♥
+        </div>
+
+        <h2 class="section-title">
+            A Beautiful Beginning
+        </h2>
+
+        <p class="lead">
+
+            Two hearts, two families,
+            and one beautiful journey.
+
+        </p>
+
+        <p>
+
+            With the blessings of our families,
+            we are delighted to celebrate the
+            beautiful union of
+
+        </p>
+
+        <h2 class="couple">
+
+            PRASAD
+            <span class="heart-between">♥</span>
+            MOUNIKA
+
+        </h2>
+
+        <p class="mt-4">
+
+            Your presence and blessings will make
+            this special occasion even more memorable.
+
+        </p>
+
+        <div class="row mt-5">
+
+            <div class="col-md-6">
+
+                <div class="info-box">
+
+                    <div class="info-icon">
+                        💕
+                    </div>
+
+                    <h3>
+                        Two Hearts
+                    </h3>
+
+                    <p>
+                        Coming together to begin
+                        a wonderful new journey.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="info-box">
+
+                    <div class="info-icon">
+                        🌸
+                    </div>
+
+                    <h3>
+                        One Celebration
+                    </h3>
+
+                    <p>
+                        A day filled with happiness,
+                        blessings and beautiful memories.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <button class="btn btn-wedding"
+                onclick="showPage('details')">
+
+            Wedding Details →
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- PAGE 3 -->
+
+<section id="details" class="page">
+
+    <div class="content-card">
+
+        <div class="ornament">
+            ❦ ♥ ❦
+        </div>
+
+        <h2 class="section-title">
+            Wedding Details
+        </h2>
+
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <div class="info-box">
+
+                    <div class="info-icon">
+                        📅
+                    </div>
+
+                    <h3>
+                        Date
+                    </h3>
+
+                    <p>
+                        27 March 2026
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="info-box">
+
+                    <div class="info-icon">
+                        ⏰
+                    </div>
+
+                    <h3>
+                        Time
+                    </h3>
+
+                    <p>
+                        8:00
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="info-box">
+
+                    <div class="info-icon">
+                        📍
+                    </div>
+
+                    <h3>
+                        Venue
+                    </h3>
+
+                    <p>
+                        Eluru
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <h4>♥ The Celebration</h4>
+
+                <p>
+                    Join us as we celebrate
+                    the beautiful beginning of
+                    PRASAD and MOUNIKA.
+                </p>
+
+            </div>
+
+            <div class="timeline-item">
+
+                <h4>🌸 Family & Friends</h4>
+
+                <p>
+                    Your presence, love and blessings
+                    will make our celebration complete.
+                </p>
+
+            </div>
+
+            <div class="timeline-item">
+
+                <h4>💕 A New Journey</h4>
+
+                <p>
+                    Together with their families,
+                    the couple begins a new chapter
+                    filled with love and happiness.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button class="btn btn-wedding"
+                onclick="showPage('welcome')">
+
+            Heart Welcome ♥
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- PAGE 4 -->
+
+<section id="welcome" class="page">
+
+    <div class="hero-card">
+
+        <div>
+
+            <div class="ornament">
+                ♥ ♥ ♥
+            </div>
+
+            <h2 class="section-title">
+                Heart Welcome
+            </h2>
+
+            <p class="lead">
+
+                With love in our hearts
+                and happiness in our souls,
+
+            </p>
+
+            <h2 class="couple">
+
+                PRASAD
+                <span class="heart-between">♥</span>
+                MOUNIKA
+
+            </h2>
+
+            <p class="mt-4">
+
+                warmly welcome you and your family
+                to share the joy of their special day.
+
+            </p>
+
+            <div class="mt-4">
+
+                <h4>
+                    📅 27 March 2026
+                </h4>
+
+                <h4>
+                    ⏰ 8:00
+                </h4>
+
+                <h4>
+                    📍 Eluru
+                </h4>
+
+            </div>
+
+            <p class="mt-4">
+
+                Your presence is our greatest blessing. ♥
+
+            </p>
+
+            <button class="btn btn-wedding"
+                    onclick="showPage('home')">
+
+                Back to Invitation
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <p>
+        Made with ♥ for the PENUMARTHI Wedding
+    </p>
+
+    <p>
+        PRASAD ♥ MOUNIKA
+    </p>
+
+</footer>
+
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<script>
+
+    /* ---------------- PAGE NAVIGATION ---------------- */
+
+    function showPage(pageId) {
+
+        const pages = document.querySelectorAll(".page");
+
+        pages.forEach(page => {
+
+            page.classList.remove("active");
+
+        });
+
+        document.getElementById(pageId)
+            .classList.add("active");
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    /* ---------------- FLOATING HEARTS ---------------- */
+
+    function createHeart() {
+
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+
+        heart.innerHTML = "♥";
+
+        heart.style.left =
+            Math.random() * 100 + "vw";
+
+        heart.style.fontSize =
+            (15 + Math.random() * 25) + "px";
+
+        heart.style.animationDuration =
+            (5 + Math.random() * 7) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+
+            heart.remove();
+
+        }, 12000);
+
+    }
+
+    setInterval(createHeart, 500);
+
+
+    /* ---------------- FALLING FLOWERS ---------------- */
+
+    function createFlower() {
+
+        const flower = document.createElement("div");
+
+        flower.className = "flower";
+
+        const flowers = [
+            "🌸",
+            "🌺",
+            "🌼",
+            "💮",
+            "✿"
+        ];
+
+        flower.innerHTML =
+            flowers[Math.floor(Math.random() * flowers.length)];
+
+        flower.style.left =
+            Math.random() * 100 + "vw";
+
+        flower.style.animationDuration =
+            (5 + Math.random() * 6) + "s";
+
+        flower.style.fontSize =
+            (15 + Math.random() * 20) + "px";
+
+        document.body.appendChild(flower);
+
+        setTimeout(() => {
+
+            flower.remove();
+
+        }, 12000);
+
+    }
+
+    setInterval(createFlower, 900);
+
+
+    /* ---------------- WELCOME EFFECT ---------------- */
+
+    window.addEventListener("load", () => {
+
+        setTimeout(() => {
+
+            document.body.style.opacity = "1";
+
+        }, 300);
+
+    });
+
+</script>
+
+</body>
+</html>
